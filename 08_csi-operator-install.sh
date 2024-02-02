@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 cat <<EOF | oc apply -f -
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup

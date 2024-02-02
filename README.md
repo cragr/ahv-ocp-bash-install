@@ -36,12 +36,6 @@ Update the `pull_secret` file with your Red Hat pull secret.
 1. Obtain your pull secret from the [Red Hat OpenShift Cluster Manager](https://cloud.redhat.com/openshift/install).
 2. Replace the content of the `pull_secret` file in the repository with your pull secret.
 
-### Update Variables File
-
-Update the `00_set-variables.sh` file with values matching your environment.
-
-*Note: This installer has been tested with OpenShift 4.14.x releases only.*
-
 ## Deployment
 
 To deploy OpenShift on Nutanix, follow these steps:
@@ -57,7 +51,10 @@ git clone https://github.com/cragr/ahv-ocp-bash-install
 cd ahv-ocp-bash-install
 ```
 
-3. Run the deployment scripts one at a time starting with 01_fetch_binaries.sh:
+3. Update the `00_set-variables.sh` file with values matching your environment.
+
+
+4. Run the deployment scripts one at a time starting with 01_fetch_binaries.sh:
 ```
 ./01_fetch_binaries.sh
 ```

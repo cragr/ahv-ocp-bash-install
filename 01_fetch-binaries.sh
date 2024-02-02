@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 source 00_set-variables.sh
 
 mkdir -p /tmp/ocp-tools

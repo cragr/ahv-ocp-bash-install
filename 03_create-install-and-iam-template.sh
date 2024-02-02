@@ -1,27 +1,38 @@
 #!/bin/bash
 
-set -e
-
 source 00_set-variables.sh
 
-cd ~/openshift
+mkdir -p ./$INSTALL_DIR/iam
 
-INDENTED_CERT=$( cat ca.crt | awk '{ print " ", $0 }' )
+INDENTED_CERT=$( cat ./"${INSTALL_DIR}"/ca.crt | awk '{ print " ", $0 }' )
 
-cat > install-config.yaml <<EOF
+cat > ./$INSTALL_DIR/install-config.yaml <<EOF
+additionalTrustBundlePolicy: Proxyonly
 apiVersion: v1
 baseDomain: ${BASE_DOMAIN}
 compute:
 - architecture: ${RELEASE_ARCH}
   hyperthreading: Enabled
   name: worker
-  platform: {}
-  replicas: 3
+  platform:
+    nutanix:
+      categories:
+      - key: AppType
+        value: Openshift
+      - key: AppTier
+        value: Openshift_Compute
+  replicas: 3  
 controlPlane:
   architecture: ${RELEASE_ARCH}
   hyperthreading: Enabled
   name: master
-  platform: {}
+  platform:
+    nutanix:
+      categories:
+      - key: AppType
+        value: Openshift
+      - key: AppTier
+        value: Openshift_Controlplane
   replicas: 3
 credentialsMode: Manual
 metadata:
@@ -35,7 +46,7 @@ networking:
   - cidr: ${MACHINE_NETWORK}
   networkType: OVNKubernetes
   serviceNetwork:
-  - 172.30.0.0/16
+  - ${SERVICE_NETWORK}
 platform:
   nutanix:
     apiVIPs:
@@ -55,15 +66,18 @@ platform:
       uuid: ${NTNX_PE_UUID}
     subnetUUIDs:
     - ${NTNX_PE_SUBNET_UUID}
+    defaultMachinePlatform:
+      bootType: Legacy
+      categories:
+      - key: AppType
+        value: Openshift
 publish: External
 pullSecret: ${PULL_SECRET}
 sshKey: |+
   ${SSH_KEY}
-additionalTrustBundle: |
-${INDENTED_CERT}
 EOF
 
-cat > iam.yaml <<EOF
+cat > ./$INSTALL_DIR/iam/iam.yaml <<EOF
 credentials:
 - type: basic_auth
   data:
