@@ -4,7 +4,7 @@ source 00_set-variables.sh
 
 mkdir -p $INSTALL_DIR/iam
 
-INDENTED_CERT=$( cat ./"${INSTALL_DIR}"/ca.crt | awk '{ print " ", $0 }' )
+INDENTED_CERT=$( cat "${INSTALL_DIR}"/ca.crt | awk '{ print " ", $0 }' )
 
 cat > $INSTALL_DIR/install-config.yaml <<EOF
 additionalTrustBundlePolicy: Proxyonly
