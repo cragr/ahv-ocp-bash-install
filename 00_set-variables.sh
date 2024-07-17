@@ -3,7 +3,7 @@
 # Specify Cluster Name, Prism Central password, and OpenShift Version
 export CLUSTER_NAME=            # Ex: homelab1 homelab2
 export PC_PASSWORD=             # Located 
-export VERSION=4.14.10   #Version List - https://mirror.openshift.com/pub/openshift-v4/clients/ocp/
+export VERSION=4.16.3  #Version List - https://mirror.openshift.com/pub/openshift-v4/clients/ocp/
 
 # Common variables
 export PRISM_CENTRAL_FQDN=prism-central.mydc.dev
