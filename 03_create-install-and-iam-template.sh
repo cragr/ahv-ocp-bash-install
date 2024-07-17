@@ -16,11 +16,6 @@ compute:
   name: worker
   platform:
     nutanix:
-      categories:
-      - key: AppType
-        value: Openshift
-      - key: AppTier
-        value: Openshift_Compute
   replicas: 3  
 controlPlane:
   architecture: ${RELEASE_ARCH}
@@ -28,11 +23,6 @@ controlPlane:
   name: master
   platform:
     nutanix:
-      categories:
-      - key: AppType
-        value: Openshift
-      - key: AppTier
-        value: Openshift_Controlplane
   replicas: 3
 credentialsMode: Manual
 metadata:
@@ -68,9 +58,6 @@ platform:
     - ${NTNX_PE_SUBNET_UUID}
     defaultMachinePlatform:
       bootType: Legacy
-      categories:
-      - key: AppType
-        value: Openshift
 publish: External
 pullSecret: ${PULL_SECRET}
 sshKey: |+
