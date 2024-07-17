@@ -2,8 +2,8 @@
 
 source 00_set-variables.sh
 
-mkdir ./$INSTALL_DIR
-cd ./$INSTALL_DIR
+mkdir $INSTALL_DIR
+cd $INSTALL_DIR
 
 # Download certificate
 openssl s_client -showcerts -servername ${PRISM_CENTRAL_FQDN} -connect ${PRISM_CENTRAL_FQDN}:9440 </dev/null |  \

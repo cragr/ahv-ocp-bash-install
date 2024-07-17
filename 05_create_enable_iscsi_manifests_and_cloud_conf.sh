@@ -3,7 +3,7 @@
 source 00_set-variables.sh
 
 # Configure iSCSI machineconfig
-cat > ./$INSTALL_DIR/openshift/99-master-ntnx-csi-enable-iscsid.yaml <<EOF
+cat > $INSTALL_DIR/openshift/99-master-ntnx-csi-enable-iscsid.yaml <<EOF
 apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfig
 metadata:
@@ -20,7 +20,7 @@ spec:
           name: iscsid.service
 EOF
 
-cat > ./$INSTALL_DIR/openshift/99-worker-ntnx-csi-enable-iscsid.yaml <<EOF
+cat > $INSTALL_DIR/openshift/99-worker-ntnx-csi-enable-iscsid.yaml <<EOF
 apiVersion: machineconfiguration.openshift.io/v1
 kind: MachineConfig
 metadata:
@@ -38,7 +38,7 @@ spec:
 EOF
 
 # Create cloud-config ConfigMap
-cat > ./$INSTALL_DIR/manifests/openshift-cloud-controller-manager-cloud-config.yaml <<EOF
+cat > $INSTALL_DIR/manifests/openshift-cloud-controller-manager-cloud-config.yaml <<EOF
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -64,7 +64,7 @@ data:
 EOF
 
 # Create cloud-config ConfigMap
-cat > ./$INSTALL_DIR/manifests/openshift-cloud-controller-manager-nutanix-credentials-credentials.yaml <<EOF
+cat > $INSTALL_DIR/manifests/openshift-cloud-controller-manager-nutanix-credentials-credentials.yaml <<EOF
 apiVersion: v1
 kind: Secret
 metadata:

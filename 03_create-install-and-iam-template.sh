@@ -2,11 +2,11 @@
 
 source 00_set-variables.sh
 
-mkdir -p ./$INSTALL_DIR/iam
+mkdir -p $INSTALL_DIR/iam
 
 INDENTED_CERT=$( cat ./"${INSTALL_DIR}"/ca.crt | awk '{ print " ", $0 }' )
 
-cat > ./$INSTALL_DIR/install-config.yaml <<EOF
+cat > $INSTALL_DIR/install-config.yaml <<EOF
 additionalTrustBundlePolicy: Proxyonly
 apiVersion: v1
 baseDomain: ${BASE_DOMAIN}
@@ -77,7 +77,7 @@ sshKey: |+
   ${SSH_KEY}
 EOF
 
-cat > ./$INSTALL_DIR/iam/iam.yaml <<EOF
+cat > $INSTALL_DIR/iam/iam.yaml <<EOF
 credentials:
 - type: basic_auth
   data:

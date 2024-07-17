@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Specify Cluster Name, Prism Central password, and OpenShift Version
-export CLUSTER_NAME=            # Ex: homelab1 homelab2
-export PC_PASSWORD=             # Located 
+export CLUSTER_NAME=homelab1            # Ex: homelab1 homelab2
+export PC_PASSWORD=Nutanix/4u             # Located 
 export VERSION=4.16.3  #Version List - https://mirror.openshift.com/pub/openshift-v4/clients/ocp/
 
 # Common variables
 export PRISM_CENTRAL_FQDN=prism-central.mydc.dev
-export INSTALL_DIR=./ocp-install
+export INSTALL_DIR=~/ocp-install
 export RELEASE_ARCH=amd64
 export BASE_DOMAIN=mydc.dev
-export PC_USERNAME=admin
+export PC_USERNAME=ocpadmin
 export PULL_SECRET="$(< pull_secret)"
 export SSH_KEY="$(< id_rsa_ocp.pub)"
 export CLUSTER_NETWORK=10.128.0.0/14
@@ -24,7 +24,7 @@ if [ $CLUSTER_NAME = 'homelab1' ]; then
     export API_VIP=192.168.10.21
     export INGRESS_VIP=192.168.10.22
     export PE_ENDPOINT=192.168.10.17
-    export DATA_SERVICE_ENDPOINT=
+    export DATA_SERVICE_ENDPOINT=192.168.10.18
     export STORAGE_CONTAINER=homelab1-volumes
 else
     :
@@ -38,7 +38,7 @@ if [ $CLUSTER_NAME = 'homelab2' ]; then
     export API_VIP=
     export INGRESS_VIP=
     export PE_ENDPOINT=192.168.10.17
-    export DATA_SERVICE_ENDPOINT=
+    export DATA_SERVICE_ENDPOINT=192.168.10.18
     export STORAGE_CONTAINER=homelab2-volumes
 else
     :
