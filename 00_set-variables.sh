@@ -18,8 +18,8 @@ export SERVICE_NETWORK=172.30.0.0/16
 
 # cluster specific variables
 if [ $CLUSTER_NAME = 'okdlab' ]; then
-    export NTNX_PE_SUBNET_UUID=251ddf3f-2eb8-4947-b330-5d60911d4305
-    export NTNX_PE_UUID=00060e9d-43b4-5243-791b-246e963cb590
+    export NTNX_PE_SUBNET_UUID=34004d18-7119-4a4d-8f2b-410b30141a17
+    export NTNX_PE_UUID=00063002-8083-7b9c-50ea-3448ede7ae8b
     export MACHINE_NETWORK=192.168.10.0/23
     export API_VIP=192.168.10.11
     export INGRESS_VIP=192.168.10.12
